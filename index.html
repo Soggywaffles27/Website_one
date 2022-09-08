@@ -9,16 +9,21 @@
     <title>test</title> 
     <link rel="stylesheet" href="styles.css">
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-    <p>testing</p>
-    
+    <p>testing...</p>
+    try:
+      <button type="button">Click Me!</button>
+    except:
+      print("test 1 failed")
     <py-script> 
       test.py()
       import random
-      a = int(input("Number: "))
-      b = random.randint(0,30)
+      try: 
+        a = int(input("Number: "))
+        b = random.randint(0,30)
+        print(a + b)
+      except:
+        print("test 2 failed")
       print("<p>Hello world</p>")
-      print(a + b)
-
     </py-script>
     <py-repl>
       print("hello")
