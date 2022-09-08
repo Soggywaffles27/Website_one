@@ -16,12 +16,11 @@
     <py-script> 
       test.py()
       import random
-      try: 
-        a = int(input("Number: "))
-        b = random.randint(0,30)
-        print(a + b)
-      except:
-        print("test 2 failed")
+
+      a = int(input("Number: "))
+      b = random.randint(0,30)
+      print(a + b)
+
       print("<p>Hello world</p>")
     </py-script>
     <py-repl>
