@@ -14,6 +14,7 @@
       - pytube
       - paths:
         - help.py
+        - ytmp3.py
     </py-env>
    </head>
   <body>
@@ -21,10 +22,13 @@
 
 import random
 import datetime as dt
+from pytube import YouTube
 
 from help import gen
 print("<p>" + str(gen()) + "</p>")
-import pytube
+from ytmp3 import mp3
+
+ytmp3.mp3()
       
 print("<p>Hello world</p>")
     </py-script>
