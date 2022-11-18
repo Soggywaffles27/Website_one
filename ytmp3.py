@@ -1,25 +1,18 @@
+#https://www.youtube.com/watch?v=dQw4w9WgXcQ
 def mp3():
-  from pytube import YouTube
-  import os
+  import youtube_dl
+  def download_ytvid_as_mp3():
+      video_url = input("enter url of youtube video:")
+      video_info = youtube_dl.YoutubeDL().extract_info(url = video_url,download=False)
+      filename = f"{video_info['title']}.mp3"
+      options={
+          'format':'bestaudio/best',
+          'keepvideo':False,
+          'outtmpl':filename,
+      }
 
-  # url input from user
-  yt = YouTube(
-      str(input("Enter the URL of the video you want to download: \n>> ")))
+      with youtube_dl.YoutubeDL(options) as ydl:
+          ydl.download([video_info['webpage_url']])
 
-  # extract only audio
-  video = yt.streams.filter(only_audio=True).first()
-
-  # check for destination to save file
-  print("<p>Enter the destination (leave blank for current directory)</p>")
-  destination = str(input(">> ")) or '.'
-
-  # download the file
-  out_file = video.download(output_path=destination)
-
-  # save the file
-  base, ext = os.path.splitext(out_file)
-  new_file = base + '.mp3'
-  os.rename(out_file, new_file)
-
-  # result of success
-  print("<p>"+ yt.title + " has been successfully downloaded.</p>")
+      print("Download complete... {}".format(filename))
+  download_ytvid_as_mp3()
