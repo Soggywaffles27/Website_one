@@ -8,13 +8,14 @@ def mp3():
 
   yt = pytube.YouTube("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 
-  vids= yt.streams.all()
+  #vids= yt.streams.all()
 
   vnum = 0
 
   parent_dir = r"C:\YTDownloads"
-  vids[vnum].download(parent_dir)
-
+  #vids[vnum].download(parent_dir)
+  yt.download(parent_dir)
+  
   new_filename = "pls work"
 
   default_filename = vids[vnum].default_filename  # get default name using pytube API
