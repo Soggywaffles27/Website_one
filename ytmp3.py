@@ -1,31 +1,25 @@
 def mp3():
-  from pytube import YouTube 
+  from pytube import YouTube
+  import os
 
-  # where to save 
-  SAVE_PATH = "E:/" #to_do 
+  # url input from user
+  yt = YouTube(
+      str(input("Enter the URL of the video you want to download: \n>> ")))
 
-  # link of the video to be downloaded 
-  link="https://www.youtube.com/watch?v=xWOoBJUqlbI"
+  # extract only audio
+  video = yt.streams.filter(only_audio=True).first()
 
-  try: 
-      # object creation using YouTube
-      # which was imported in the beginning 
-      yt = YouTube(link) 
-  except: 
-      print("Connection Error") #to handle exception 
+  # check for destination to save file
+  print("<p>Enter the destination (leave blank for current directory)</p>")
+  destination = str(input(">> ")) or '.'
 
-  # filters out all the files with "mp4" extension 
-  mp4files = yt.filter('mp4') 
+  # download the file
+  out_file = video.download(output_path=destination)
 
-  #to set the name of the file
-  yt.set_filename('GeeksforGeeks Video')  
+  # save the file
+  base, ext = os.path.splitext(out_file)
+  new_file = base + '.mp3'
+  os.rename(out_file, new_file)
 
-  # get the video with the extension and
-  # resolution passed in the get() function 
-  d_video = yt.get(mp4files[-1].extension,mp4files[-1].resolution) 
-  try: 
-      # downloading the video 
-      d_video.download(SAVE_PATH) 
-  except: 
-      print("Some Error!") 
-  print('Task Completed!') 
+  # result of success
+  print("<p>"+ yt.title + " has been successfully downloaded.</p>")
