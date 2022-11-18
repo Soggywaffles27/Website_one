@@ -16,7 +16,7 @@ def mp3():
   parent_dir = r"C:\YTDownloads"
   vids[vnum].download(parent_dir)
 
-  new_filename = input("Enter filename (including extension): "))  # e.g. new_filename.mp3
+  new_filename = "pls work"  # e.g. new_filename.mp3
 
   default_filename = vids[vnum].default_filename  # get default name using pytube API
   subprocess.run([
