@@ -7,24 +7,15 @@ def mp3():
   import pytube
 
   yt = pytube.YouTube("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
-  
-  stream = yt.streams.first()
-  stream.download()
-  #vids= yt.streams.all()
 
-#   vnum = 0
+  vids= yt.streams.all()
+  #for i in range(len(vids)):
+      #print(i,'. ',vids[i])
 
-#   parent_dir = r"C:\YTDownloads"
-#   #vids[vnum].download(parent_dir)
-#   yt.download(parent_dir)
-  
-#   new_filename = "pls work"
+  vnum = int(0)
 
-#   default_filename = vids[vnum].default_filename  # get default name using pytube API
-#   subprocess.run([
-#       'ffmpeg',
-#       '-i', os.path.join(parent_dir, default_filename),
-#       os.path.join(parent_dir, new_filename)
-#   ])
+  parent_dir = r"C:\YTDownloads"
+  vids[vnum].download(parent_dir)
 
-#   print('done')
+  new_filename = "newfile"
+
